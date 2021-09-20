@@ -12,6 +12,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import javax.xml.ws.Response;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import com.rpc.example.spring.service.Mediator;
 
 /**
  * @Package: com.rpc.example.handler
@@ -26,7 +27,15 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcProtocol<Rp
         RpcProtocol<RpcResponse> resProtocol = new RpcProtocol();
         Header header = msg.getHeader();
         header.setReqType(ReqType.RESPONSE.code());
+
+        ///*
+        //* 新版
+        //* */
+        //Object result = Mediator.getInstance().processer(msg.getContent());
+
+        //旧版
         Object result = invoke(msg.getContent());
+
         resProtocol.setHeader(header);
         RpcResponse response = new RpcResponse();
         response.setData(result);
@@ -36,6 +45,7 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcProtocol<Rp
         ctx.writeAndFlush(resProtocol);//写出去
     }
 
+    @Deprecated
     private Object invoke(RpcRequest request){
         try {
             Class<?> clazz = Class.forName(request.getClassName());
