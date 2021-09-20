@@ -14,11 +14,11 @@ import org.springframework.stereotype.Component;
  * @CreateTime: 2021/9/17 10:05 下午
  * @Description:
  */
-@ComponentScan(basePackages = {"com.rpc.example.spring","com.rpc.example.service"})
+@ComponentScan(basePackages = {"com.rpc.example.spring.service","com.rpc.example.service"})
 @SpringBootApplication
 public class NettyRpcProvider {
     public static void main(String[] args) {
         SpringApplication.run(NettyRpcProvider.class,args);
-        new NettyServer("127.0.0.1",8080).startNettyServer();
+        //new NettyServer("127.0.0.1",8080).startNettyServer();//原来是基于此做一个发布
     }
 }

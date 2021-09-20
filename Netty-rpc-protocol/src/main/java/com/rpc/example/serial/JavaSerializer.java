@@ -1,23 +1,20 @@
 package com.rpc.example.serial;
 
 import com.rpc.example.constants.SerialType;
+import com.rpc.example.serial.ISerializer;
 
 import java.io.*;
 
-/**
- * @Package: com.rpc.example.serial
- * @ClassName: JavaSerializer
- * @Author: zyh
- * @CreateTime: 2021/9/17 10:44 下午
- * @Description:
- */
-public class JavaSerializer implements ISerializer{
+public class JavaSerializer implements ISerializer {
+
+
     @Override
     public <T> byte[] serialize(T obj) {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ByteArrayOutputStream bos=new ByteArrayOutputStream();
+        ObjectOutputStream oos= null;
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(bos);
-            oos.writeObject(obj);//序列化
+            oos = new ObjectOutputStream(bos);
+            oos.writeObject(obj); //序列化
             return bos.toByteArray();
         } catch (IOException e) {
             e.printStackTrace();
@@ -28,9 +25,11 @@ public class JavaSerializer implements ISerializer{
     @Override
     public <T> T deserialize(byte[] data, Class<T> clazz) {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
+            ObjectInputStream ois=new ObjectInputStream(new ByteArrayInputStream(data));
             return (T)ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;

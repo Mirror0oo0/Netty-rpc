@@ -19,11 +19,11 @@
     <dependencies>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>Netty-rpc-protocol</artifactId>
+            <artifactId>Netty-rpc-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>Netty-rpc-api</artifactId>
+            <artifactId>Netty-rpc-protocol</artifactId>
         </dependency>
     </dependencies>
 
