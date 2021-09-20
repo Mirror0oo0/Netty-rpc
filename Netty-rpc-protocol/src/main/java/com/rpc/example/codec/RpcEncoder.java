@@ -24,7 +24,7 @@ public class RpcEncoder extends MessageToByteEncoder<RpcProtocol<Object>>{
         log.info("==============begin RpcEncoder===========");
         Header header = msg.getHeader();
         out.writeShort(header.getMagic());
-        out.writeByte(header.getReqType());
+        out.writeByte(header.getSerialType());
         out.writeByte(header.getReqType());
         out.writeLong(header.getRequestId());
         ISerializer serializer = SerializerManager.getSerializer(header.getSerialType());
