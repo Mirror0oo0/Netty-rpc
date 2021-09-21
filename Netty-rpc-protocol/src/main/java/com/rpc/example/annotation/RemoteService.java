@@ -1,5 +1,7 @@
 package com.rpc.example.annotation;
 
+import org.springframework.stereotype.Component;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -14,5 +16,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)//表示注解可以用来类、接口、枚举
 @Retention(RetentionPolicy.RUNTIME)//注解信息在运行时也会保留，可以被反射到
+@Component
 public @interface RemoteService {
 }

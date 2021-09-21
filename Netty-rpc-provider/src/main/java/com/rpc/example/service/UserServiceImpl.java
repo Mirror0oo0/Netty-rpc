@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 //@Service 不用Service注解改用自己定义到RemoteService
-@RemoteService
+
 @Slf4j
+@RemoteService
 public class UserServiceImpl implements IUserService {
     @Override
     public String saveUser(String name) {

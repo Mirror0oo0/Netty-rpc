@@ -1,5 +1,6 @@
-package com.rpc.example.service;
+package com.rpc.example.spring.service;
 
+import com.rpc.example.spring.service.RpcServerProperties;
 import com.rpc.example.spring.service.SpringRpcProviderBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

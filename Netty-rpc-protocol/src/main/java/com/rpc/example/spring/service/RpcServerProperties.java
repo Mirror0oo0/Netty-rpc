@@ -1,4 +1,4 @@
-package com.rpc.example.service;
+package com.rpc.example.spring.service;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

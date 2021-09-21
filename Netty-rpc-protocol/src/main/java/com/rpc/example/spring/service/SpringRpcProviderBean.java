@@ -52,8 +52,9 @@ public class SpringRpcProviderBean implements InitializingBean, BeanPostProcesso
         if(bean.getClass().isAnnotationPresent(RemoteService.class)){
             Method[] methods = bean.getClass().getDeclaredMethods();
             for (Method method:methods){
-                String key = bean.getClass().getInterfaces()[0].getName()+"."+method.getName();
-                BeanMethod beanMethod = new BeanMethod();
+                String serviceName=bean.getClass().getInterfaces()[0].getName();
+                String key = serviceName+"."+method.getName();
+                BeanMethod beanMethod=new BeanMethod();
                 beanMethod.setBean(bean);
                 beanMethod.setMethod(method);
                 Mediator.beanMethodMap.put(key,beanMethod);

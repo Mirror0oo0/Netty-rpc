@@ -1,5 +1,6 @@
 package com.rpc.example.handler;
 
+
 import com.rpc.example.constants.ReqType;
 import com.rpc.example.core.Header;
 import com.rpc.example.core.RpcProtocol;
@@ -28,13 +29,13 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<RpcProtocol<Rp
         Header header = msg.getHeader();
         header.setReqType(ReqType.RESPONSE.code());
 
-        ///*
-        //* 新版
-        //* */
-        //Object result = Mediator.getInstance().processer(msg.getContent());
+        /*
+        * 新版
+        * */
+        Object result = Mediator.getInstance().processer(msg.getContent());
 
-        //旧版
-        Object result = invoke(msg.getContent());
+        ////旧版
+        //Object result = invoke(msg.getContent());
 
         resProtocol.setHeader(header);
         RpcResponse response = new RpcResponse();

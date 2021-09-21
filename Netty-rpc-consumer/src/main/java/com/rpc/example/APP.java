@@ -11,7 +11,7 @@ public class APP {
     public static void main(String[] args) {
 
         RpcClientProxy rpc = new RpcClientProxy();
-        IUserService userService = rpc.clientProxy(IUserService.class,"192.168.0.105",20880);
+        IUserService userService = rpc.clientProxy(IUserService.class,"127.0.0.1",20880);
         System.out.println(userService.saveUser("ZYH"));
     }
 }
